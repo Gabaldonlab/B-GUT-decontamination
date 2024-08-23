@@ -21,3 +21,43 @@ make singularity-image
 This will create the "my_singularity.sif", ready to be used with our snakemake pipeline.
 
 ## How to run the pipeline using the Singularity image
+
+Here there is an example of command to run the pipeline. 
+
+
+In High-Performance Computing (HPC) environments such as marenostrum5, you may need to bind folders when using containerization tools like Singularity to ensure that your container can access the necessary files and directories that exist outside of the container's file system that is why we add the flag -B.
+
+```bash
+snakemake --use-singularity --singularity-args '-B /gpfs/projects/bsc40' -s /gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
+```
+In the .smk file there is indicated the path to the .sif image.
+
+You can find a template job to run the pipeline in the cluster: "bgut_decontam.job"
+
+IMPORTANT: 
+In the pipeline you might want to change some of the parameters (This will be addressed with a config file in future versions):
+
+From the bgut_decontam.smk file:
+
+# Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
+genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/GENOMES"
+out_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster"
+
+# Define the wildcards (for processing multiple genome files)
+GENOME_SUFFIX = "_Genome.fasta" #Change with the extension of the genome files
+PREFIX = "renamedFungiDB-58_" #In case you have any prefix (in this case the genomes where renamed for kraken2)
+
+In the R scripts there are also some strings that you might change to not have errors, that depend in the genome names you have:
+
+1. Clean_fasta.R: Change in the suffix and prefix
+file_name_renamed <- gsub("renamedFungiDB-58_", "", file_name)
+file_name_renamed <- gsub("_Genome.fasta", "", file_name_renamed)
+
+2. Parsing_kraken2_reports.R
+
+name <- gsub("gpfs/.*/","",i) --> This is specific for marenostrum5
+
+3. Assessment_gc_distribution.R --> all ok
+
+4. Final_decision_kraken2_and_gc_content.R --> The path corresponds to marenostrum5
+df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster/gc_content/","",df_multimodality$X)
