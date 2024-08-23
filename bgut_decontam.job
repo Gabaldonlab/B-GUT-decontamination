@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#SBATCH --job-name=bgut_singu_testy # Job’s name (to trace in)
+#SBATCH --output=/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/err_out/jobnm_%j.out # Output file, where
+#SBATCH --error=/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/err_out/jobnm_%j.err # File where the error is written
+
+#SBATCH --ntasks=1 # The number of parallel tasks
+#SBATCH --cpus-per-task=24 # Number of CPUs per run task
+#SBATCH --tasks-per-node=1 # The number of allocated task/node
+
+#SBATCH --qos=gp_bscls # The queue for the job
+#SBATCH --account=bsc40
+#SBATCH --time=5:00:00 # The time you request for the job
+#SBATCH --constraint=highmem # To run in highmem nodes
+
+source ~/.bashrc
+conda activate singularity_exec_env
+
+snakemake --use-singularity --singularity-args '-B /gpfs/projects/bsc40' -s /gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/bgut_decontam_v2.smk all --cores 48
+
