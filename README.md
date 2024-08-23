@@ -88,13 +88,14 @@ df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamina
 
 ### Snakemake
 
-[Sustainable data analysis with Snakemake](<(https://doi.org/10.12688/f1000research.29032.1)>)
+Mölder F, Jablonski KP, Letcher B, et al. Sustainable data analysis with Snakemake. F1000Res. 2021;10:33. (2021). <doi:10.12688/f1000research.29032.2>
 
 ### Kraken2
 
 Wood, D.E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. Genome Biol 20, 257 (2019). <https://doi.org/10.1186/s13059-019-1891-0>
 
-
 ### Tiara
 
-Michał Karlicki, Stanisław Antonowicz, Anna Karnkowska, Tiara: deep learning-based classification system for eukaryotic sequences, Bioinformatics, Volume 38, Issue 2, 15 January 2022, Pages 344–350, <https://doi.org/10.1093/bioinformatics/btab672>
+Michał Karlicki, Stanisław Antonowicz, Anna Karnkowska, Tiara: deep learning-based classification system for eukaryotic sequences, Bioinformatics, Volume 38, Issue 2 (2022) <https://doi.org/10.1093/bioinformatics/btab672>
+
+
