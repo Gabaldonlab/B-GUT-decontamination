@@ -1,0 +1,7 @@
+renamedFungiDB-58_AinvadansNJM9701_Genome.fasta  
+renamedFungiDB-58_CqueenslandicumCBS280.77_Genome.fasta  
+renamedFungiDB-58_DrugosaCBS613_Genome.fasta  
+renamedFungiDB-58_EafricanusCBS136260_Genome.fasta
+
+
+Source: FungiDb https://fungidb.org/ 
