@@ -1,6 +1,13 @@
 # B-GUT-decontamination
 Snakemake pipeline to potentially decontaminate genomes to be included in a kraken2 database
 
+
+
+Example of the pipeline run in a folder containing 4 genomes [provided as an example here]
+
+![bgutdecontam_schema](https://github.com/user-attachments/assets/adf75fe3-8712-4e2c-baa2-56bd1a64e328)
+
+
 ## Singularity image
 
 1. Marenostrum5
@@ -50,7 +57,7 @@ From the bgut_decontam.smk file:
 
 ** Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
 ```bash
-genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/GENOMES"
+genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/Example_genomes"
 out_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster"
 ```
 ** Define the wildcards (for processing multiple genome files)
