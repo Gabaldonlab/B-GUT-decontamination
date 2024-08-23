@@ -34,19 +34,23 @@ In the .smk file there is indicated the path to the .sif image.
 
 You can find a template job to run the pipeline in the cluster: "bgut_decontam.job"
 
+## Changes you might need to do in the pipeline:
+
 IMPORTANT: 
 In the pipeline you might want to change some of the parameters (This will be addressed with a config file in future versions):
 
 From the bgut_decontam.smk file:
 
-# Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
+### Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
+```bash
 genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/GENOMES"
 out_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster"
-
-# Define the wildcards (for processing multiple genome files)
+```
+### Define the wildcards (for processing multiple genome files)
+```bash
 GENOME_SUFFIX = "_Genome.fasta" #Change with the extension of the genome files
 PREFIX = "renamedFungiDB-58_" #In case you have any prefix (in this case the genomes where renamed for kraken2)
-
+```
 In the R scripts there are also some strings that you might change to not have errors, that depend in the genome names you have:
 
 1. Clean_fasta.R: Change in the suffix and prefix
