@@ -41,12 +41,12 @@ In the pipeline you might want to change some of the parameters (This will be ad
 
 From the bgut_decontam.smk file:
 
-### Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
+** Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
 ```bash
 genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/GENOMES"
 out_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster"
 ```
-### Define the wildcards (for processing multiple genome files)
+** Define the wildcards (for processing multiple genome files)
 ```bash
 GENOME_SUFFIX = "_Genome.fasta" #Change with the extension of the genome files
 PREFIX = "renamedFungiDB-58_" #In case you have any prefix (in this case the genomes where renamed for kraken2)
@@ -54,14 +54,19 @@ PREFIX = "renamedFungiDB-58_" #In case you have any prefix (in this case the gen
 In the R scripts there are also some strings that you might change to not have errors, that depend in the genome names you have:
 
 1. Clean_fasta.R: Change in the suffix and prefix
+
+```bash
 file_name_renamed <- gsub("renamedFungiDB-58_", "", file_name)
 file_name_renamed <- gsub("_Genome.fasta", "", file_name_renamed)
+```
+3. Parsing_kraken2_reports.R
 
-2. Parsing_kraken2_reports.R
-
+```bash
 name <- gsub("gpfs/.*/","",i) --> This is specific for marenostrum5
-
+```
 3. Assessment_gc_distribution.R --> all ok
 
 4. Final_decision_kraken2_and_gc_content.R --> The path corresponds to marenostrum5
+```bash
 df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster/gc_content/","",df_multimodality$X)
+```
