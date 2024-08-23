@@ -3,7 +3,7 @@ Snakemake pipeline to potentially decontaminate genomes to be included in a krak
 
 
 
-Example of the pipeline run in a folder containing 4 genomes [provided as an example here]
+Example of the pipeline run in a folder containing 4 genomes [An example of one of these genomes is provided in the folder "Example_genomes"]
 
 ![bgutdecontam_schema](https://github.com/user-attachments/assets/adf75fe3-8712-4e2c-baa2-56bd1a64e328)
 
