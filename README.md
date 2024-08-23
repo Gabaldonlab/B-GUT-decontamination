@@ -1,5 +1,5 @@
 # B-GUT-decontamination
-Snakemake pipeline to potentially decontaminate genomes to be included in a kraken2 database
+Snakemake pipeline to potentially decontaminate genomes to be included in a kraken2 database.
 
 
 
@@ -92,5 +92,9 @@ df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamina
 
 ### Kraken2
 
-(Improved metagenomic analysis with Kraken 2)[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0]
-###
+Wood, D.E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. Genome Biol 20, 257 (2019). <https://doi.org/10.1186/s13059-019-1891-0>
+
+
+### Tiara
+
+Michał Karlicki, Stanisław Antonowicz, Anna Karnkowska, Tiara: deep learning-based classification system for eukaryotic sequences, Bioinformatics, Volume 38, Issue 2, 15 January 2022, Pages 344–350, <https://doi.org/10.1093/bioinformatics/btab672>
