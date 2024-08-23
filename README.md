@@ -20,8 +20,4 @@ make singularity-image
 
 This will create the "my_singularity.sif", ready to be used with our snakemake pipeline.
 
-2. Marenostrum 5
-
-You will find the .sif file at gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/my_singularity.sif
-
 ## How to run the pipeline using the Singularity image
