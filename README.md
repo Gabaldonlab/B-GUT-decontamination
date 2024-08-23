@@ -34,6 +34,13 @@ In the .smk file there is indicated the path to the .sif image.
 
 You can find a template job to run the pipeline in the cluster: "bgut_decontam.job"
 
+Note that the pipeline is fast but requires high mem nodes because of the kraken2 step. You can have a debug interaction session and run it there by:
+
+```bash
+salloc -A bsc40 -q gp_debug --exclusive --constraint=highmem
+snakemake --use-singularity --singularity-args '-B /gpfs/projects/bsc40' -s /gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
+```
+
 ## Changes you might need to do in the pipeline:
 
 IMPORTANT: 
@@ -59,7 +66,7 @@ In the R scripts there are also some strings that you might change to not have e
 file_name_renamed <- gsub("renamedFungiDB-58_", "", file_name)
 file_name_renamed <- gsub("_Genome.fasta", "", file_name_renamed)
 ```
-3. Parsing_kraken2_reports.R
+2. Parsing_kraken2_reports.R
 
 ```bash
 name <- gsub("gpfs/.*/","",i) --> This is specific for marenostrum5
@@ -70,3 +77,13 @@ name <- gsub("gpfs/.*/","",i) --> This is specific for marenostrum5
 ```bash
 df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster/gc_content/","",df_multimodality$X)
 ```
+## Citations / Acknowledgments
+
+### Snakemake
+
+[Sustainable data analysis with Snakemake](<(https://doi.org/10.12688/f1000research.29032.1)>)
+
+### Kraken2
+
+(Improved metagenomic analysis with Kraken 2)[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0]
+###
