@@ -1,5 +1,5 @@
 # B-GUT-decontamination
-Snakemake pipeline to potentially decontaminate genomes to be included in a kraken2 database.
+Snakemake pipeline to decontaminate genomes to be included in a kraken2 database.
 
 
 
@@ -12,7 +12,7 @@ Example of the pipeline run in a folder containing 4 genomes [An example of one 
 
 1. Marenostrum5
 
-  You will find the .sif file at gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/my_singularity.sif
+  You will find the .sif file at ~/current/okhannous/Decontamination_fungal_database/my_singularity.sif
 
 2. Local use
 
@@ -35,7 +35,7 @@ Here there is an example of command to run the pipeline.
 In High-Performance Computing (HPC) environments such as marenostrum5, you may need to bind folders when using containerization tools like Singularity to ensure that your container can access the necessary files and directories that exist outside of the container's file system that is why we add the flag -B.
 
 ```bash
-snakemake --use-singularity --singularity-args '-B /gpfs/projects/bsc40' -s /gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
+snakemake --use-singularity --singularity-args '-B /path_to_our_group_folder/bscXX' -s ~/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
 ```
 In the .smk file there is indicated the path to the .sif image.
 
@@ -45,7 +45,7 @@ Note that the pipeline is fast but requires high mem nodes because of the kraken
 
 ```bash
 salloc -A bsc40 -q gp_debug --exclusive --constraint=highmem
-snakemake --use-singularity --singularity-args '-B /gpfs/projects/bsc40' -s /gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
+snakemake --use-singularity --singularity-args '-B /path_to_our_group_folder/bscXX' -s ~/current/okhannous/Decontamination_fungal_database/bgut_decontam.smk all --cores 48
 ```
 
 ## Changes you might need to do in the pipeline:
@@ -57,8 +57,8 @@ From the bgut_decontam.smk file:
 
 ** Global directories (where the genomes are located and where you want to store the results), this should be changed according to your data:
 ```bash
-genomes_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/Example_genomes"
-out_dir = "/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster"
+genomes_dir = "~/current/okhannous/current/okhannous/Decontamination_fungal_database/Example_genomes"
+out_dir = "~/current/okhannous/current/okhannous/Decontamination_fungal_database/OUT_cluster"
 ```
 ** Define the wildcards (for processing multiple genome files)
 ```bash
@@ -82,7 +82,7 @@ name <- gsub("gpfs/.*/","",i) --> This is specific for marenostrum5
 
 4. Final_decision_kraken2_and_gc_content.R --> The path corresponds to marenostrum5
 ```bash
-df_multimodality$X <-   gsub("/gpfs/projects/bsc40/current/okhannous/Decontamination_fungal_database/OUT_cluster/gc_content/","",df_multimodality$X)
+df_multimodality$X <-   gsub("~/current/okhannous/Decontamination_fungal_database/OUT_cluster/gc_content/","",df_multimodality$X)
 ```
 ## Citations / Acknowledgments
 
